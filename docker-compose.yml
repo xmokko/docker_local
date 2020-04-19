@@ -33,7 +33,9 @@ services:
         container_name: php-fpm
         volumes:
             - ./Nginx/www:/var/www
-            - ./PHP/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+ #           - ./PHP/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+        environment:
+          XDEBUG_CONFIG: remote_host=$DOCKER_INTERNAL_IP
         links:
             - mysql
 
